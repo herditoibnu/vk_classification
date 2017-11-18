@@ -1,9 +1,9 @@
-# import cv2
 import Image
-
+import LBP
 
 if __name__ == '__main__':
     img = Image.Image("coba.jpg")
     img_read = img.run()
-    # cv2.imshow("img", img_read)
-    # cv2.waitKey()
+
+    LBP_classifier = LBP.LBP(img_read)
+    LBP_result = LBP_classifier.run()
