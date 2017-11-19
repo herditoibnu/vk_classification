@@ -1,16 +1,7 @@
-class LBP:
-    def __init__(self, img_read):
-        self.img_read = img_read
+from Extraction import Extraction
 
-    def weighting(self, thresholded):
-        weighted = []
-        i = 0
-        for t in thresholded:
-            weighted.append(t * 2**i)
-            i += 1
 
-        return sum(weighted)
-
+class ClbpS(Extraction):
     def threshold(self, c, neighbours):
         thresholded = []
         for n in neighbours:
@@ -22,6 +13,7 @@ class LBP:
         return self.weighting(thresholded)
 
     def run(self):
+        print self.img_read
         neighbours = [25, 10, 15, 1, 8, 5, 3, 36]
         center = 12
         print self.threshold(center, neighbours)

@@ -1,9 +1,9 @@
 import Image
-import LBP
+import ClbpS
 
 if __name__ == '__main__':
     img = Image.Image("coba.jpg")
     img_read = img.run()
 
-    LBP_classifier = LBP.LBP(img_read)
-    LBP_result = LBP_classifier.run()
+    ClbpS_classifier = ClbpS.ClbpS(img_read)
+    ClbpS_result = ClbpS_classifier.run()
