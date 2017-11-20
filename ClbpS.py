@@ -2,10 +2,10 @@ from Extraction import Extraction
 
 
 class ClbpS(Extraction):
-    def threshold(self, c, neighbours):
+    def threshold(self, center, neighbours):
         thresholded = []
         for n in neighbours:
-            if n >= c:
+            if n >= center:
                 thresholded.append(1)
             else:
                 thresholded.append(0)
@@ -13,8 +13,7 @@ class ClbpS(Extraction):
         return self.weighting(thresholded)
 
     def run(self):
-        print self.img_read
-        neighbours = [25, 10, 15, 1, 8, 5, 3, 36]
+        neighbours = [25, 100, 15, 1, 8, 5, 3, 36]
         center = 12
         print self.threshold(center, neighbours)
 
