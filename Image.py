@@ -7,7 +7,7 @@ class Image:
 
     def read_img(self):
         img_rgb = cv2.imread(self.img_file)
-        return cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
+        return cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
 
     def run(self):
         img_read = self.read_img()
