@@ -30,4 +30,11 @@ if __name__ == '__main__':
     print ClbpM_result
     print ClbpC_result
 
-    print np.concatenate((ClbpS_result,ClbpM_result,ClbpC_result),axis = 0)
+
+
+    file = open("tes.txt","w")
+    list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
+    for item in list:
+        file.write( "%s\n" % item )
+    file.write("\n")
+    file.close()
