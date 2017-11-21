@@ -14,6 +14,13 @@ class ClbpM(Extraction):
 
         return self.weighting(thresholded)
 
+    def getValue(self,img_read,x,y):
+        try:
+            return img_read[x,y]
+        except IndexError:
+            return 0
+
+
     def getmagnitude(self, center, neighbours):
         magnitude = []
         for n in neighbours:
@@ -21,7 +28,23 @@ class ClbpM(Extraction):
         return magnitude
 
     def run(self):
-        neighbours = [28, 56, 64, 99, 10, 9, 12, 34]
-        center = 25
-        magnitude = self.getmagnitude(center, neighbours)
-        print self.threshold(magnitude)
+        histogramCLBPM = [0] * 256
+        for x in range(self.img_read.shape[0]):
+            for y in range(self.img_read.shape[1]):
+                center_right = self.getValue(self.img_read, x, y + 1)
+                down_right = self.getValue(self.img_read, x + 1, y + 1)
+                down_center = self.getValue(self.img_read, x, y + 1)
+                down_left = self.getValue(self.img_read, x - 1, y + 1)
+                center_left = self.getValue(self.img_read, x, y - 1)
+                top_left = self.getValue(self.img_read, x - 1, y - 1)
+                top_center = self.getValue(self.img_read, x, y - 1)
+                top_right = self.getValue(self.img_read, x + 1, y - 1)
+                neighbours = [center_right, down_right, down_center, down_left, center_left, top_left, top_center,
+                              top_right]
+                center = self.img_read[x,y]
+                magnitude = self.getmagnitude(center, neighbours)
+                histogramCLBPM[self.threshold(magnitude)]+=1
+
+        return histogramCLBPM
+
+
