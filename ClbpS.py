@@ -2,9 +2,6 @@ from Extraction import Extraction
 
 
 class ClbpS(Extraction):
-    def __init__(self, img_read):
-        self.img_read = img_read
-
     def threshold(self, center, neighbours):
         thresholded = []
         for n in neighbours:
@@ -15,14 +12,11 @@ class ClbpS(Extraction):
 
         return self.weighting(thresholded)
 
-
     def getValue(self,img_read,x,y):
         try:
             return img_read[x,y]
         except IndexError:
             return 0
-
-
 
     def run(self):
         histogramCLBPS = [0]*256
