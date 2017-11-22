@@ -101,7 +101,7 @@ if __name__ == '__main__':
         for line in file_training:
             line_count+=1
             if line_count<=515:
-                training_array.append(line)
+                training_array.append(int(line))
             elif line_count == 516:
                 jarak = canberra_distance(list, training_array)
                 array_jarak.append(jarak)
