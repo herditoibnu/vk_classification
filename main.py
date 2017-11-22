@@ -40,7 +40,6 @@ if __name__ == '__main__':
     flag = 0
     hasil = []
     kelas_testing = []
-
     # mengubah gambar training menjadi histogram CLBP dan ditulis ke dalam file
     if not os.path.isfile("pixel.txt"):
         for item in file:
@@ -93,7 +92,6 @@ if __name__ == '__main__':
         ClbpC_result = ClbpC_classifier.run()
 
         list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
-
         kelas_testing.append(kelas)
         if flag == 4:
             flag = 0
