@@ -13,12 +13,11 @@ def canberra_distance(testing, training): #menghitung jarak menggunakan Canberra
     jarak = 0
     i=0
     for val in testing:
-        if val == 0 and testing[i] == 0:
+        if val == 0 and training[i] == 0:
             continue
         else:
             jarak += (abs(float(val - training[i])) / (abs(float(val)) + abs(float(training[i]))))
-
-        i+=1
+        i += 1
     jarak_dan_kelas = [jarak, kelas]
     return jarak_dan_kelas
 
