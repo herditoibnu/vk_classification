@@ -27,7 +27,7 @@ def akurasi(kelas_training, hasil): #menghitung akurasi hasil knn
         if val == hasil[count]:
             total_benar+=1
         count+=1
-    return (total_benar/count)*100
+    return (float(total_benar)/float(count))*100
 
 
 if __name__ == '__main__':
