@@ -17,6 +17,8 @@ def canberra_distance(testing, training): #menghitung jarak menggunakan Canberra
             continue
         else:
             jarak += (abs(float(val - training[i])) / (abs(float(val)) + abs(float(training[i]))))
+
+        i+=1
     jarak_dan_kelas = [jarak, kelas]
     return jarak_dan_kelas
 
@@ -67,7 +69,7 @@ if __name__ == '__main__':
                 flag = 0
                 kelas +=1
 
-    dir_name = "d1/"
+    dir_name = "d2/"
     file = open("dataset4.txt", "r")
     line_count = 0
     flag = 0
@@ -93,6 +95,7 @@ if __name__ == '__main__':
 
         list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
         kelas_testing.append(kelas)
+        print kelas
         if flag == 4:
             flag = 0
             kelas += 1
@@ -109,12 +112,13 @@ if __name__ == '__main__':
                 training_array.append(int(line))
             elif line_count == 516:
                 jarak = canberra_distance(list, training_array)
+               # print jarak
                 array_jarak.append(jarak)
                 line_count = 0
                 training_array = []
-
         #mencari data jarak terkecil sebanyak k, mencari kelas yang paling banyak terjadi, dan ditaruh ke dalam array hasil
         array_jarak.sort(key = lambda jarak: jarak[0])
+        #print array_jarak
         i = 0
         kelas_vote=[]
         cnt = cl.Counter()
