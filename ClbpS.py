@@ -40,6 +40,4 @@ class ClbpS(Extraction):
         # center = 12
         # print self.threshold(center, neighbours)
 
-        for i in range(self.img_read.shape[0]):  # traverses through height of the image
-            for j in range(self.img_read.shape[1]):  # traverses through width of the image
-                print self.img_read[i][j]
+
