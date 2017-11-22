@@ -8,7 +8,7 @@ import os.path
 
 
 
-def canberra_distance(testing, training):
+def canberra_distance(testing, training): #menghitung jarak menggunakan Canberra Distance
     kelas = training[514]
     jarak = 0
     i=0
@@ -18,7 +18,7 @@ def canberra_distance(testing, training):
     jarak_dan_kelas = [jarak, kelas]
     return jarak_dan_kelas
 
-def akurasi(kelas_training, hasil):
+def akurasi(kelas_training, hasil): #menghitung akurasi hasil knn
     total_benar = 0
     count = 0
     for val in kelas_training:
@@ -91,13 +91,13 @@ if __name__ == '__main__':
             flag = 0
             kelas += 1
 
-        file = open("pixel.txt","r")
+        file_training = open("pixel.txt","r")
         line_count = 0
         training_array = [] #array untuk menyimpan histogram CLBP dari file training, per image array direset
         array_jarak = []
 
         #menghitung jarak dari data testing ke setiap data training
-        for line in file:
+        for line in file_training:
             line_count+=1
             if line_count<=515:
                 training_array.append(line)
