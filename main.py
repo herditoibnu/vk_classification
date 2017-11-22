@@ -13,8 +13,10 @@ def canberra_distance(testing, training): #menghitung jarak menggunakan Canberra
     jarak = 0
     i=0
     for val in testing:
-        if val != 0 and testing[i] != 0:
-            jarak += (abs(val-training[i])/(abs(val)+abs(training[i])))
+        if val == 0 and testing[i] == 0:
+            continue
+        else:
+            jarak += (abs(float(val - training[i])) / (abs(float(val)) + abs(float(training[i]))))
     jarak_dan_kelas = [jarak, kelas]
     return jarak_dan_kelas
 
@@ -32,6 +34,7 @@ if __name__ == '__main__':
 
     dir_name = "d1/"
     nilai_k = raw_input("Masukkan nilai k:")
+    nilai_k  = int(nilai_k)
     file = open("dataset16.txt","r")
     kelas = 1
     flag = 0
@@ -65,15 +68,17 @@ if __name__ == '__main__':
                 flag = 0
                 kelas +=1
 
-    dir_name = "d2/"
+    dir_name = "d1/"
     file = open("dataset4.txt", "r")
     line_count = 0
     flag = 0
     kelas = 1
-
+    conter = 0
     #iterasi file testing
     for item in file:
         flag+=1
+        conter+=1
+        print "Gambar ke: " + str(conter)
 #        print item.strip()
         img = Image.Image(dir_name + item.strip())
         img_read = img.run()
@@ -86,7 +91,9 @@ if __name__ == '__main__':
 
         ClbpC_classifier = ClbpC.ClbpC(img_read)
         ClbpC_result = ClbpC_classifier.run()
+
         list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
+
         kelas_testing.append(kelas)
         if flag == 4:
             flag = 0
@@ -113,9 +120,14 @@ if __name__ == '__main__':
         i = 0
         kelas_vote=[]
         cnt = cl.Counter()
+
         for jarak in array_jarak:
+            i+=1
             cnt[jarak[1]]+=1
+            if(i==nilai_k):
+                break
         hasil.append(max(cnt, key=cnt.get))
+
 
     print kelas_testing
     print hasil
