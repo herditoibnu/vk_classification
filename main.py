@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 flag = 0
                 kelas +=1
 
-    dir_name = "d1/"
+    dir_name = "d2/"
     file = open("dataset4.txt", "r")
     line_count = 0
     flag = 0
