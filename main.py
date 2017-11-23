@@ -13,11 +13,11 @@ def canberra_distance(testing, training): #menghitung jarak menggunakan Canberra
     jarak = 0
     i=0
     for val in testing:
-        if val == 0 and training[i] == 0:
-            continue
-        else:
-            jarak += (abs(float(val - training[i])) / (abs(float(val)) + abs(float(training[i]))))
+        if not(val == 0 and training[i] == 0):
+            # print (abs(float(val) - float(training[i])) / (abs(float(val)) + abs(float(training[i]))))
+            jarak += (abs(float(val) - float(training[i])) / (abs(float(val)) + abs(float(training[i]))))
         i += 1
+
     jarak_dan_kelas = [jarak, kelas]
     return jarak_dan_kelas
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 flag = 0
                 kelas +=1
 
-    dir_name = "d2/"
+    dir_name = "d1/"
     file = open("dataset4.txt", "r")
     line_count = 0
     flag = 0
@@ -94,7 +94,6 @@ if __name__ == '__main__':
 
         list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
         kelas_testing.append(kelas)
-        print kelas
         if flag == 4:
             flag = 0
             kelas += 1
