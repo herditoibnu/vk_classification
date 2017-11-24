@@ -34,10 +34,6 @@ class ClbpS(Extraction):
                 center = self.threshold(self.img_read[x,y],neighbours)
 
                 histogramCLBPS[center]+=1
+
         return histogramCLBPS
-
-        # neighbours = [25, 100, 15, 1, 8, 5, 3, 36]
-        # center = 12
-        # print self.threshold(center, neighbours)
-
 
