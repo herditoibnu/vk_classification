@@ -58,8 +58,8 @@ if __name__ == '__main__':
             list = np.concatenate((ClbpS_result, ClbpM_result, ClbpC_result), axis=0)
 
             data = open("pixel.txt","a")
-            for item in list:
-                data.write( "%s\n" % item )
+            for l in list:
+                data.write( "%s\n" % l )
             data.write("%s\n" %kelas)
             data.write("\n")
             data.close()
