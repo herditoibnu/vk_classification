@@ -14,4 +14,5 @@ class ClbpC(Extraction):
         for x in range(self.img_read.shape[0]):
             for y in range(self.img_read.shape[1]):
                 histogramCLBPC[self.threshold(self.img_read[x,y],rata2)] += 1
+
         return histogramCLBPC

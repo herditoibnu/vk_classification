@@ -1,6 +1,5 @@
-
-from Extraction import Extraction
 import numpy as np
+from Extraction import Extraction
 
 
 class ClbpM(Extraction):
@@ -20,7 +19,6 @@ class ClbpM(Extraction):
             return img_read[x,y]
         except IndexError:
             return 0
-
 
     def getmagnitude(self, center, neighbours):
         magnitude = []
@@ -44,6 +42,7 @@ class ClbpM(Extraction):
                               top_right]
                 center = self.img_read[x,y]
                 magnitude = self.getmagnitude(center, neighbours)
+
                 histogramCLBPM[self.threshold(magnitude)]+=1
 
         return histogramCLBPM
